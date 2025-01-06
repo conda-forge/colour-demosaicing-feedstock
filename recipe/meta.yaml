@@ -6,24 +6,24 @@ package:
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/colour_demosaicing-{{ version }}.tar.gz
+  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/colour_demosaicing-{{ version }}.tar.gz
   sha256: 7d23ff67290ab714c36cfdc862e119ea1e244aa9cbb21f97748d6799fcd67a66
 
 build:
   noarch: python
   script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
-  number: 0
+  number: 1
 
 requirements:
   host:
     - pip
-    - python >=3.8,<3.11
+    - python {{ python_min }}
     - poetry
   run:
     - colour-science >=0.4.0
     - imageio >=2,<3
     - numpy >=1.19,<2
-    - python >=3.8,<3.11
+    - python >={{ python_min }},<3.11
     - scipy >=1.5,<2
     - typing-extensions >=4,<5
 
@@ -34,6 +34,7 @@ test:
     - pip check
   requires:
     - pip
+    - python {{ python_min }}
 
 about:
   home: https://www.colour-science.org/colour-demosaicing/
