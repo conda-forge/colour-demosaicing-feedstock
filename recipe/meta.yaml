@@ -1,5 +1,5 @@
 {% set name = "colour-demosaicing" %}
-{% set version = "0.2.5" %}
+{% set version = "0.2.7" %}
 
 package:
   name: {{ name|lower }}
@@ -7,12 +7,12 @@ package:
 
 source:
   url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/colour_demosaicing-{{ version }}.tar.gz
-  sha256: 7d23ff67290ab714c36cfdc862e119ea1e244aa9cbb21f97748d6799fcd67a66
+  sha256: 0d151f7bbd2cb6d57381fc8adbd05a0236c10753d224af9f1d0717e6c6e08239
 
 build:
   noarch: python
   script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
-  number: 1
+  number: 0
 
 requirements:
   host:
